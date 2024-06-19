@@ -1,39 +1,35 @@
-# FilesManger
+# 数据和文件-文件管理
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+## 简介
 
-#### 软件架构
-软件架构说明
+实现文件管理相关的操作，包括应用文件保存与读取，用户文件图片读取，txt文档读取保存操作。便于用户根据codelab学习如何操作文件管理。
 
+![](screenshots/device/file.gif)
 
-#### 安装教程
+## 相关概念
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+- 文件管理能力：该模块为基础文件操作API，提供基础文件操作能力，包括文件基本管理、文件目录管理、文件信息统计、文件流式读写等常用功能。（@ohos.file.fs）
+- 选择器： 选择器(Picker)是一个封装PhotoViewPicker、DocumentViewPicker、AudioViewPicker等API模块，具有选择与保存的能力。（@ohos.file.picker）
+- 相册管理模块：该模块提供相册管理模块能力，包括创建相册以及访问、修改相册中的媒体数据信息等。（@ohos.file.photoAccessHelper）
+- PhotoViewPicker：图库选择器对象，用来支撑选择图片/视频和保存图片/视频等用户场景。
+- DocumentViewPicker：文件选择器对象，用来支撑选择和保存各种格式文档。
 
-#### 使用说明
+## 相关权限
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+不涉及
 
-#### 参与贡献
+## 使用说明
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+1. 在输入框输入内容后，点击保存至应用沙箱目录，可以创建沙箱文件并将信息存储在沙箱文件下。
+2. 点击读取保存的文件内容，即可获取沙箱文件保存的内容。
+3. 点击保存图片按钮，可以将图片保存至图库中。
+4. 点击添加文件的图片，可以拉取图库，并挑选一张图片展示在页面上。
+5. 在输入框输入内容后，点击保存 test.txt至用户目录，可以拉取文件管理页面，创建文件并保存内容。
+6. 点击读取test.txt文件内容。可以拉取文件目录，挑选文件读取内容。
 
+## 约束与限制
 
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+1. 本示例仅支持标准系统上运行，支持设备：华为手机。
+2. HarmonyOS系统：HarmonyOS NEXT Developer Beta1及以上。
+3. DevEco Studio版本：DevEco Studio NEXT Developer Beta1及以上。
+4. HarmonyOS SDK版本：HarmonyOS NEXT Developer Beta1 SDK及以上。
