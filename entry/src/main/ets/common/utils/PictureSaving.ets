@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { picker } from '@kit.CoreFileKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import Logger from './Logger';
 
@@ -27,11 +27,11 @@ let uris: Array<string> = [];
  */
 export async function photoPickerGetUri(): Promise<string> {
   try {
-    let PhotoSelectOptions = new picker.PhotoSelectOptions();
-    PhotoSelectOptions.MIMEType = picker.PhotoViewMIMETypes.IMAGE_TYPE;
+    let PhotoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
+    PhotoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
     PhotoSelectOptions.maxSelectNumber = 1;
-    let photoPicker = new picker.PhotoViewPicker();
-    await photoPicker.select(PhotoSelectOptions).then((PhotoSelectResult: picker.PhotoSelectResult) => {
+    let photoPicker = new photoAccessHelper.PhotoViewPicker();
+    await photoPicker.select(PhotoSelectOptions).then((PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
       Logger.info('PhotoViewPicker.select successfully, PhotoSelectResult uri: ' + JSON.stringify(PhotoSelectResult));
       uris = PhotoSelectResult.photoUris;
     }).catch((err: BusinessError) => {
