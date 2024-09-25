@@ -14,7 +14,7 @@
     },
     {
       "name": "textarea_default",
-      "value": "Please enter the content to be saved to the file"
+      "value": "Enter the file content to be saved"
     },
     {
       "name": "file_content",

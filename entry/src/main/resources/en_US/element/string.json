@@ -14,7 +14,7 @@
     },
     {
       "name": "textarea_default",
-      "value": "Please enter the content to be saved to the file"
+      "value": "Enter the file content to be saved"
     },
     {
       "name": "file_content",
@@ -26,7 +26,7 @@
     },
     {
       "name": "button2",
-      "value": "Reads the saved file content."
+      "value": "Read the saved file content"
     },
     {
       "name": "title",
@@ -34,7 +34,7 @@
     },
     {
       "name": "bar1",
-      "value": "Application File"
+      "value": "APP File"
     },
     {
       "name": "bar2",
@@ -50,11 +50,11 @@
     },
     {
       "name": "button3",
-      "value": "Save the test.txt file to the user directory."
+      "value": "Save the test.txt file to the user directory"
     },
     {
       "name": "button4",
-      "value": "Reading the content of the test.txt file"
+      "value": "Read the content of the test.txt file"
     }
   ]
 }
