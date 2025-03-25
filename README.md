@@ -1,8 +1,8 @@
-# 文件管理
+# 实现文件管理功能
 
 ## 简介
 
-实现文件管理相关的操作，包括应用文件保存与读取，用户文件图片读取，txt文档读取保存操作。便于用户根据codelab学习如何操作文件管理。
+本示例通过Core File kit实现文件管理相关的操作，包括应用文件保存与读取，用户文件图片读取，txt文档读取保存操作。帮助开发者应对多种文件处理场景。
 
 ![](screenshots/device/file.gif)
 
@@ -30,6 +30,6 @@
 ## 约束与限制
 
 1. 本示例仅支持标准系统上运行，支持设备：华为手机。
-2. HarmonyOS系统：HarmonyOS NEXT Developer Beta1及以上。
-3. DevEco Studio版本：DevEco Studio NEXT Developer Beta1及以上。
-4. HarmonyOS SDK版本：HarmonyOS NEXT Developer Beta1 SDK及以上。
+2. HarmonyOS系统：HarmonyOS 5.0.0 Release及以上。
+3. DevEco Studio版本：DevEco Studio 5.0.0 Release及以上。
+4. HarmonyOS SDK版本：HarmonyOS 5.0.0 Release SDK及以上。
