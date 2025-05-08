@@ -17,8 +17,10 @@ import { fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 import { buffer } from '@kit.ArkTS';
 
+const uiContext: UIContext | undefined = AppStorage.get('uiContext');
+
 // Obtaining the Application File Path
-let context = getContext(this) as common.UIAbilityContext;
+let context = uiContext!.getHostContext() as common.UIAbilityContext;
 let filesDir = context.filesDir;
 let res: string = '';
 
