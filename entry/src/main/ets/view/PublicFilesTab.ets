@@ -46,14 +46,14 @@ export struct publicFilesTab {
             if (result == SaveButtonOnClickResult.SUCCESS) {
               try {
                 Logger.info('createAsset successfully, event: ' + event);
-                let context = getContext();
+                let context = this.getUIContext().getHostContext();
                 let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
                 // Creating a Media File
                 let uri = await phAccessHelper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
                 Logger.info('createAsset successfully, uri: ' + uri);
                 // Open the created media file and read the local file and convert it to ArrayBuffer for easy filling.
                 let file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE);
-                let buffer = getContext(this).resourceManager.getMediaContentSync($r('app.media.img').id);
+                let buffer = this.getUIContext().getHostContext()!.resourceManager.getMediaContentSync($r('app.media.img').id);
                 // Write the read ArrayBuffer to the new media file.
                 let writeLen = await fileIo.write(file.fd, buffer.buffer);
                 Logger.info('write success,len=' + writeLen);

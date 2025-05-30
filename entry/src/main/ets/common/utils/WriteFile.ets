@@ -16,7 +16,8 @@
 import { fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 
-let context = getContext(this) as common.UIAbilityContext;
+const uiContext: UIContext | undefined = AppStorage.get('uiContext');
+let context = uiContext!.getHostContext() as common.UIAbilityContext;
 let filesDir = context.filesDir;
 
 /**
