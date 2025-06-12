@@ -9,8 +9,8 @@ Learn how to implement file management, including saving and reading app files, 
 ## Concepts
 
 - Files manager: provides APIs for file operations, including accessing and managing files and directories, obtaining file information, and reading and writing data using streams. (**@ohos.file.fs**)
-- Picker: encapsulates APIs such as **PhotoViewPicker**, **DocumentViewPicker**, and **AudioViewPicker** for you to pick and save files. (**@ohos.file.picker**)
-- Photo manager: provides the photo management capabilities, including creating an album, and accessing and modifying media data in the album. (**@ohos.file.photoAccessHelper**)
+- Picker: encapsulates APIs such as **DocumentViewPicker**, and **AudioViewPicker** for you to pick and save files. (**@ohos.file.picker**)
+- Photo manager: provides the photo management capabilities, including creating an album, and accessing and modifying media data in the album, and **PhotoViewPicker**. (**@ohos.file.photoAccessHelper**)
 - PhotoViewPicker: allows you to pick and save images and videos.
 - DocumentViewPicker: allows you to pick and save documents in different formats.
 
