@@ -16,6 +16,7 @@
 import { fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 import { buffer } from '@kit.ArkTS';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const uiContext: UIContext | undefined = AppStorage.get('uiContext');
 
@@ -30,17 +31,22 @@ let res: string = '';
  * @return string.
  */
 export function readFile(): string {
-  let filePath = filesDir + '/test.txt';
-  let stat = fileIo.statSync(filePath);
-  let size = stat.size;
-  let buf = new ArrayBuffer(size);
-  // Open a file stream based on the file path.
-  let fileStream = fileIo.createStreamSync(filePath, "r+");
-  // File stream reading information
-  fileStream.readSync(buf);
-  // Converts the read information to the string type and returns the string type.
-  let con = buffer.from(buf, 0);
-  res = con.toString();
-  fileStream.close();
-  return res;
+  try {
+    let filePath = filesDir + '/test.txt';
+    let stat = fileIo.statSync(filePath);
+    let size = stat.size;
+    let buf = new ArrayBuffer(size);
+    // Open a file stream based on the file path.
+    let fileStream = fileIo.createStreamSync(filePath, "r+");
+    // File stream reading information
+    fileStream.readSync(buf);
+    // Converts the read information to the string type and returns the string type.
+    let con = buffer.from(buf, 0);
+    res = con.toString();
+    fileStream.close();
+    return res;
+  } catch (error) {
+    hilog.error(0x0000, 'readFile', `readFile catch error, code: ${error.code}, message: ${error.message}`);
+    return '';
+  }
 }
