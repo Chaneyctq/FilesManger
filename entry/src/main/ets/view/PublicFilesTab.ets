@@ -18,7 +18,6 @@ import { fileIo } from '@kit.CoreFileKit';
 import Logger from '../common/utils/Logger';
 import { readUserFile, saveToUser } from '../common/utils/SavingAndSelectUserFile';
 import { photoPickerGetUri } from '../common/utils/PictureSaving';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Component
 export struct publicFilesTab {
