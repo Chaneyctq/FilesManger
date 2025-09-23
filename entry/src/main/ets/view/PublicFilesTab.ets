@@ -49,7 +49,11 @@ export struct publicFilesTab {
                 let context = this.getUIContext().getHostContext();
                 let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
                 // Creating a Media File
-                let uri = await phAccessHelper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
+                let uri = await phAccessHelper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg')
+                  .catch((error: BusinessError<Error>) => {
+                    Logger.error(`createAsset catch error, code: ${error.code}, message: ${error.message}`);
+                    return '';
+                  })
                 Logger.info('createAsset successfully, uri: ' + uri);
                 // Open the created media file and read the local file and convert it to ArrayBuffer for easy filling.
                 let file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE);

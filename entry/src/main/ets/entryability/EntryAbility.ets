@@ -47,7 +47,12 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-      AppStorage.setOrCreate('uiContext', windowStage.getMainWindowSync().getUIContext());
+
+      try {
+        AppStorage.setOrCreate('uiContext', windowStage.getMainWindowSync().getUIContext());
+      } catch (error) {
+        hilog.error(0x0000, 'testTag', `getMainWindowSync catch error, code: ${error.code}, message: ${error.message}`);
+      }
     });
   }
 
