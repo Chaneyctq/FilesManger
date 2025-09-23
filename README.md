@@ -8,11 +8,11 @@
 
 ## 相关概念
 
-- 文件管理能力：该模块为基础文件操作API，提供基础文件操作能力，包括文件基本管理、文件目录管理、文件信息统计、文件流式读写等常用功能。（@ohos.file.fs）
-- 选择器： 选择器(Picker)是一个封装DocumentViewPicker、AudioViewPicker等API模块，具有选择与保存的能力。（@ohos.file.picker）
-- 相册管理模块：该模块提供相册管理模块能力，包括创建相册以及访问、修改相册中的媒体数据信息以及PhotoViewPicker等。（@ohos.file.photoAccessHelper）
-- PhotoViewPicker：图库选择器对象，用来支撑选择图片/视频和保存图片/视频等用户场景。
-- DocumentViewPicker：文件选择器对象，用来支撑选择和保存各种格式文档。
+- [文件管理能力](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-file-fs)：该模块为基础文件操作API，提供基础文件操作能力，包括文件基本管理、文件目录管理、文件信息统计、文件流式读写等常用功能。（@ohos.file.fs）
+- [选择器](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-file-picker)： 选择器(Picker)是一个封装DocumentViewPicker、AudioViewPicker等API模块，具有选择与保存的能力。（@ohos.file.picker）
+- [相册管理模块](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-photoaccesshelper)：该模块提供相册管理模块能力，包括创建相册以及访问、修改相册中的媒体数据信息以及PhotoViewPicker等。（@ohos.file.photoAccessHelper）
+- [PhotoViewPicker](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/arkts-apis-photoaccesshelper-photoviewpicker)：图库选择器对象，用来支撑选择图片/视频和保存图片/视频等用户场景。
+- [DocumentViewPicker](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-file-picker#documentviewpicker)：文件选择器对象，用来支撑选择和保存各种格式文档。
 
 ## 相关权限
 

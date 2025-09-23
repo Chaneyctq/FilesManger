@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License,Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -69,5 +69,6 @@ struct HomePage {
     .backgroundColor($r('app.color.picture_background'))
     .justifyContent(FlexAlign.Center)
     .width('100%')
+    .padding({ top: $r('app.float.default_48') })
   }
 }

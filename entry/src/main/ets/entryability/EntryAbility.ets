@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License,Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,6 +16,7 @@
 import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -29,6 +30,16 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    windowStage.getMainWindow().then(windowClass => {
+      hilog.info(0x0000, 'testTag', '%{public}s','Succeeded in obtaining the main window. Data: ' + JSON.stringify(windowClass));
+      windowClass.setWindowLayoutFullScreen(true).then(() => {
+        hilog.info(0x0000, 'testTag', '%{public}s','Succeeded in setting the window layout to full-screen mode.');
+      }).catch((e: BusinessError) => {
+        hilog.error(0x0000, 'testTag', '%{public}s','Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(e));
+      })
+    }).catch((err: BusinessError) => {
+      hilog.error(0x0000, 'testTag', '%{public}s', 'Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+    })
 
     windowStage.loadContent('pages/HomePage', (err, data) => {
       if (err.code) {
