@@ -1,0 +1,22 @@
+# Build outputs
+entry/build/
+.hvigor/
+
+# WorkBuddy workspace memory
+.workbuddy/
+
+# Mock data (generated)
+mock_data/
+
+# IDE / OS
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Screenshots / temp images
+QQ*.png
+*.pdf
+
+# Logs
+*.log

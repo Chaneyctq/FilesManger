@@ -28,11 +28,16 @@ let res: string = '';
 /**
  * readFile.
  * Reads the contents of a file and returns a string.
+ * @param filename File name in application sandbox directory
  * @return string.
  */
-export function readFile(): string {
+export function readFile(filename: string = 'test.txt'): string {
   try {
-    let filePath = filesDir + '/test.txt';
+    let safeName: string = filename.trim();
+    if (safeName.length == 0) {
+      safeName = 'test.txt';
+    }
+    let filePath = filesDir + '/' + safeName;
     let stat = fileIo.statSync(filePath);
     let size = stat.size;
     let buf = new ArrayBuffer(size);

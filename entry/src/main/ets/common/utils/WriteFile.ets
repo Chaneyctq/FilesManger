@@ -25,10 +25,15 @@ let filesDir = context.filesDir;
  * writeFile.
  * Write content to a file
  * @param content Contents to be written to the file
+ * @param filename File name in application sandbox directory
  */
-export function writeFile(content: string): void {
+export function writeFile(content: string, filename: string = 'test.txt'): void {
   try {
-    let filePath = filesDir + '/test.txt';
+    let safeName: string = filename.trim();
+    if (safeName.length == 0) {
+      safeName = 'test.txt';
+    }
+    let filePath = filesDir + '/' + safeName;
     // Open a file stream based on the file path.
     let fileStream = fileIo.createStreamSync(filePath, "w+");
     fileStream.writeSync(content);

@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:developer.huawei.com)",
+      "Bash(powershell -Command \"[System.IO.File]::ReadAllBytes\\(''C:\\\\Users\\\\Chaney\\\\Downloads\\\\wKh2EmUMDIWAJzWWAADSSF3dr14056\\(1\\).pdf''\\)[0..500] | ForEach-Object { ''{0:X2}'' -f $_}\")",
+      "Bash(powershell -Command \"$bytes = [System.IO.File]::ReadAllBytes\\(''C:\\\\Users\\\\Chaney\\\\Downloads\\\\wKh2EmUMDIWAJzWWAADSSF3dr14056\\(1\\).pdf''\\); $bytes[0..500] | ForEach-Object { ''{0:X2}'' -f $_}\")",
+      "Bash(xxd:*)",
+      "Bash(powershell -Command \"Format-Hex -Path ''C:\\\\Users\\\\Chaney\\\\Downloads\\\\wKh2EmUMDIWAJzWWAADSSF3dr14056\\(1\\).pdf'' | Select-Object -First 30\")"
+    ]
+  }
+}

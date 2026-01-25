@@ -11,6 +11,14 @@
     {
       "name": "picture_background",
       "value": "#0D182431"
+    },
+    {
+      "name": "button_background",
+      "value": "#FFF0F5"
+    },
+    {
+      "name": "button_text_color",
+      "value": "#000000"
     }
 
   ]

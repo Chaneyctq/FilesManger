@@ -34,124 +34,154 @@ export struct publicFilesTab {
   }
 
   build() {
-    Column() {
-      Column() {
-        Image($r('app.media.img'))
-          .borderRadius($r('app.float.default_24'))
-          .width($r('app.float.default_312'))
-          .height($r('app.float.default_147'))
-        // Create Security Control Button
-        SaveButton(this.saveButtonOptions)
-          .onClick(async (event, result: SaveButtonOnClickResult) => {
-            if (result == SaveButtonOnClickResult.SUCCESS) {
-              try {
-                Logger.info('createAsset successfully, event: ' + event);
-                let context = this.getUIContext().getHostContext();
-                let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-                // Creating a Media File
-                let uri = await phAccessHelper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg')
-                  .catch((error: BusinessError<Error>) => {
-                    Logger.error(`createAsset catch error, code: ${error.code}, message: ${error.message}`);
-                    return '';
-                  })
-                Logger.info('createAsset successfully, uri: ' + uri);
-                // Open the created media file and read the local file and convert it to ArrayBuffer for easy filling.
-                let file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE);
-                let buffer = context!.resourceManager.getMediaContentSync($r('app.media.img').id);
-                // Write the read ArrayBuffer to the new media file.
-                let writeLen = await fileIo.write(file.fd, buffer.buffer);
-                Logger.info('write success,len=' + writeLen);
-                await fileIo.close(file);
-              } catch (err) {
-                Logger.error('createAsset failed, message = ', err);
-              }
-            } else {
-              Logger.error('SaveButtonOnClickResult createAsset failed');
-            }
-          })
-      }
-      .margin({ bottom: $r('app.float.default_10') })
-      .width($r('app.float.default_336'))
-      .height($r('app.float.default_223'))
-      .borderRadius($r('app.float.default_24'))
-      .justifyContent(FlexAlign.SpaceAround)
-      .backgroundColor($r('app.color.start_window_background'))
+    Stack() {
+      Image($r('app.media.background'))
+        .width('100%')
+        .height('100%')
+        .objectFit(ImageFit.Cover)
 
       Column() {
-        Text($r('app.string.select_photo'))
-          .width($r('app.float.default_302'))
-          .height($r('app.float.default_48'))
-          .lineHeight($r('app.float.default_22'))
-          .fontFamily('HarmonyHeiTi-Medium')
-          .fontSize($r('app.float.default_16'))
-          .fontWeight(500)
-          .textAlign(TextAlign.Start)
-          .fontColor($r('app.color.text_color'))
         Column() {
-          if (!this.flag) {
-            Image($r('app.media.ic_folder_add2'))
-              .width($r('app.float.default_24'))
-              .height($r('app.float.default_24'))
-              .objectFit(ImageFit.Contain)
-          } else {
-            Image(this.picture)
-              .width('100%')
-              .height('100%')
-              .borderRadius($r('app.float.default_24'))
-          }
-        }
-        .width($r('app.float.default_312'))
-        .height($r('app.float.default_147'))
-        .borderRadius($r('app.float.default_16'))
-        .backgroundColor($r('app.color.picture_background'))
-        .onClick(async () => {
-          await photoPickerGetUri().then(value => {
-            this.flag = true;
-            this.picture = value;
-          });
-        })
-        .justifyContent(FlexAlign.Center)
-        .alignItems(HorizontalAlign.Center)
-      }
-      .margin({ bottom: $r('app.float.default_10') })
-      .backgroundColor($r('app.color.start_window_background'))
-      .width($r('app.float.default_336'))
-      .height($r('app.float.default_213'))
-      .borderRadius($r('app.float.default_24'))
-
-      Column() {
-        TextArea({ placeholder: $r('app.string.textarea_default2'), text: this.isInput ? this.content : this.message })
-          .onChange((value: string) => {
-            this.content = value;
-          })
-          .width($r('app.float.default_312'))
-          .height($r('app.float.default_120'))
-          .margin({ top: $r('app.float.default_10'), bottom: $r('app.float.default_10') })
-          .enableKeyboardOnFocus(false)
-        Button($r('app.string.button3'))
-          .width($r('app.float.default_312'))
-          .height($r('app.float.default_40'))
-          .onClick(() => {
-            saveToUser(this.content)
-            this.content = '';
-            this.isInput = true;
-          })
-          .margin({ bottom: $r('app.float.default_10') })
-        Button($r('app.string.button4'))
-          .width($r('app.float.default_312'))
-          .height($r('app.float.default_40'))
-          .onClick(async () => {
-            await readUserFile().then((value: string) => {
-              this.message = value;
-              this.isInput = false;
+          Image($r('app.media.img'))
+            .borderRadius($r('app.float.default_24'))
+            .width(160)
+            .height(160)
+          // Create Security Control Button
+          SaveButton(this.saveButtonOptions)
+            .onClick(async (event, result: SaveButtonOnClickResult) => {
+              if (result == SaveButtonOnClickResult.SUCCESS) {
+                try {
+                  Logger.info('createAsset successfully, event: ' + event);
+                  let context = this.getUIContext().getHostContext();
+                  let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+                  // Creating a Media File
+                  let uri = await phAccessHelper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg')
+                    .catch((error: BusinessError<Error>) => {
+                      Logger.error(`createAsset catch error, code: ${error.code}, message: ${error.message}`);
+                      return '';
+                    })
+                  Logger.info('createAsset successfully, uri: ' + uri);
+                  // Open the created media file and read the local file and convert it to ArrayBuffer for easy filling.
+                  let file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE);
+                  let buffer = context!.resourceManager.getMediaContentSync($r('app.media.img').id);
+                  // Write the read ArrayBuffer to the new media file.
+                  let writeLen = await fileIo.write(file.fd, buffer.buffer);
+                  Logger.info('write success,len=' + writeLen);
+                  await fileIo.close(file);
+                } catch (err) {
+                  Logger.error('createAsset failed, message = ', err);
+                }
+              } else {
+                Logger.error('SaveButtonOnClickResult createAsset failed');
+              }
             })
+        }
+        .margin({ bottom: $r('app.float.default_10') })
+        .width($r('app.float.default_336'))
+        .height(260)
+        .borderRadius($r('app.float.default_24'))
+        .justifyContent(FlexAlign.SpaceAround)
+        .backgroundColor($r('app.color.start_window_background'))
+
+        Column() {
+          Text($r('app.string.select_photo'))
+            .width($r('app.float.default_302'))
+            .height($r('app.float.default_48'))
+            .lineHeight($r('app.float.default_22'))
+            .fontFamily('HarmonyHeiTi-Medium')
+            .fontSize($r('app.float.default_16'))
+            .fontWeight(500)
+            .textAlign(TextAlign.Start)
+            .fontColor($r('app.color.text_color'))
+          Column() {
+            if (!this.flag) {
+              Image($r('app.media.ic_folder_add2'))
+                .width($r('app.float.default_24'))
+                .height($r('app.float.default_24'))
+                .objectFit(ImageFit.Contain)
+            } else {
+              Image(this.picture)
+                .width('100%')
+                .height('100%')
+                .borderRadius($r('app.float.default_24'))
+            }
+          }
+          .width($r('app.float.default_312'))
+          .height(200)
+          .borderRadius($r('app.float.default_16'))
+          .backgroundColor($r('app.color.picture_background'))
+          .onClick(async () => {
+            await photoPickerGetUri().then(value => {
+              this.flag = true;
+              this.picture = value;
+            });
           })
+          .justifyContent(FlexAlign.Center)
+          .alignItems(HorizontalAlign.Center)
+        }
+        .margin({ bottom: $r('app.float.default_10') })
+        .backgroundColor($r('app.color.start_window_background'))
+        .width($r('app.float.default_336'))
+        .height(270)
+        .borderRadius($r('app.float.default_24'))
+
+        Column() {
+          TextArea({ placeholder: $r('app.string.textarea_default2'), text: this.isInput ? this.content : this.message })
+            .onChange((value: string) => {
+              this.content = value;
+            })
+            .width($r('app.float.default_312'))
+            .height($r('app.float.default_120'))
+            .margin({ top: $r('app.float.default_10'), bottom: $r('app.float.default_10') })
+            .enableKeyboardOnFocus(false)
+          Button({
+            type: ButtonType.Normal
+          }) {
+            Text($r('app.string.button3'))
+              .fontColor($r('app.color.button_text_color'))
+              .fontSize(14)
+              .maxLines(1)
+              .textOverflow({ overflow: TextOverflow.Ellipsis })
+          }
+            .width('90%')
+            .height($r('app.float.default_40'))
+            .backgroundColor($r('app.color.button_background'))
+            .borderRadius(20)
+            .margin({ left: $r('app.float.default_24'), right: $r('app.float.default_24') })
+            .onClick(() => {
+              saveToUser(this.content)
+              this.content = '';
+              this.isInput = true;
+            })
+            .margin({ bottom: $r('app.float.default_10') })
+          Button({
+            type: ButtonType.Normal
+          }) {
+            Text($r('app.string.button4'))
+              .fontColor($r('app.color.button_text_color'))
+              .fontSize(14)
+              .maxLines(1)
+              .textOverflow({ overflow: TextOverflow.Ellipsis })
+          }
+            .width('90%')
+            .height($r('app.float.default_40'))
+            .backgroundColor($r('app.color.button_background'))
+            .borderRadius(20)
+            .margin({ left: $r('app.float.default_24'), right: $r('app.float.default_24') })
+            .onClick(async () => {
+              await readUserFile().then((value: string) => {
+                this.message = value;
+                this.isInput = false;
+              })
+            })
+        }
+        .backgroundColor($r('app.color.start_window_background'))
+        .width($r('app.float.default_336'))
+        .height('251')
+        .borderRadius($r('app.float.default_24'))
+        .margin({ bottom: $r('app.float.default_100') })
       }
-      .backgroundColor($r('app.color.start_window_background'))
-      .width($r('app.float.default_336'))
-      .height('251')
-      .borderRadius($r('app.float.default_24'))
-      .margin({ bottom: $r('app.float.default_100') })
+      .width('100%')
     }
     .width('100%')
   }

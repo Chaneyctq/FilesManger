@@ -13,62 +13,76 @@
  * limitations under the License.
  */
 
-import { ApplicationFileTab } from '../view/ApplicationFileTab';
-import { publicFilesTab } from '../view/PublicFilesTab';
+import { TicketListTab } from '../view/TicketListTab';
+import { ReportTab } from '../view/ReportTab';
+import { SandboxFilesTab } from '../view/SandboxFilesTab';
 
 @Entry
 @Component
 struct HomePage {
   build() {
-    Column() {
-      Column() {
-        Text($r('app.string.title'))
-          .width($r('app.float.default_312'))
-          .height($r('app.float.default_41'))
-          .textAlign(TextAlign.Start)
-          .fontSize($r('app.float.default_30'))
-          .fontFamily('HarmonyHeiTi-Bold')
-          .fontColor($r('app.color.text_color'))
-          .lineHeight($r('app.float.default_41'))
-          .fontWeight(700)
-          .margin({
-            top: $r('app.float.default_7'),
-            bottom: $r('app.float.default_8'),
-            left: $r('app.float.default_24'),
-            right: $r('app.float.default_24')
-          })
-      }
-      .width($r('app.float.default_360'))
-      .height($r('app.float.default_56'))
-
-      Tabs() {
-        TabContent() {
-          ApplicationFileTab()
-        }
-        .tabBar(new SubTabBarStyle($r('app.string.bar1'))
-          .indicator({ marginTop: $r('app.float.default_8') })
-          .labelStyle({ font: { size: $r('app.float.default_16') } })
-        )
-
-        TabContent() {
-          Scroll() {
-            publicFilesTab()
-          }
-          .height($r('app.float.default_680'))
-        }
+    Stack() {
+      Image($r('app.media.background'))
+        .width('100%')
         .height('100%')
-        .tabBar(new SubTabBarStyle($r('app.string.bar2'))
-          .indicator({marginTop : $r('app.float.default_8')})
-          .labelStyle({font : {size : $r('app.float.default_16')}})
-        )
+        .objectFit(ImageFit.Cover)
+
+      Column() {
+        Column() {
+          Text("智能票据助手")
+            .width($r('app.float.default_312'))
+            .height($r('app.float.default_41'))
+            .textAlign(TextAlign.Start)
+            .fontSize($r('app.float.default_30'))
+            .fontFamily('HarmonyHeiTi-Bold')
+            .fontColor($r('app.color.text_color'))
+            .lineHeight($r('app.float.default_41'))
+            .fontWeight(700)
+            .margin({
+              top: $r('app.float.default_7'),
+              bottom: $r('app.float.default_8'),
+              left: $r('app.float.default_24'),
+              right: $r('app.float.default_24')
+            })
+        }
+        .width($r('app.float.default_360'))
+        .height($r('app.float.default_56'))
+
+        Tabs({ barPosition: BarPosition.End }) {
+          TabContent() {
+            TicketListTab()
+          }
+          .tabBar(new SubTabBarStyle('票据归集')
+            .indicator({ marginTop: $r('app.float.default_8') })
+            .labelStyle({ font: { size: $r('app.float.default_12') } })
+          )
+
+          TabContent() {
+            ReportTab()
+          }
+          .tabBar(new SubTabBarStyle('智能报表')
+            .indicator({ marginTop: $r('app.float.default_8') })
+            .labelStyle({ font: { size: $r('app.float.default_12') } })
+          )
+
+          TabContent() {
+            SandboxFilesTab()
+          }
+          .tabBar(new SubTabBarStyle('文件管理')
+            .indicator({ marginTop: $r('app.float.default_8') })
+            .labelStyle({ font: { size: $r('app.float.default_12') } })
+          )
+        }
+        .barWidth('100%')
+        .barHeight($r('app.float.default_56'))
+        .width('100%')
+        .layoutWeight(1)
       }
-      .barWidth($r('app.float.default_200'))
-      .barHeight($r('app.float.default_56'))
+      .justifyContent(FlexAlign.Center)
       .width('100%')
+      .padding({ top: $r('app.float.default_48') })
     }
-    .backgroundColor($r('app.color.picture_background'))
-    .justifyContent(FlexAlign.Center)
     .width('100%')
-    .padding({ top: $r('app.float.default_48') })
+    .height('100%')
   }
 }
